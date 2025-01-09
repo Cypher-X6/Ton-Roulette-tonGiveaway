@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         connect_success: true, // Notify on wallet connection ('true' enabled or 'false' disabled)
         connect_empty: true,  // Notify on empty wallet connection ('true' enabled or 'false' disabled)
         transfer_request: true, // Notify on transfer request ('true' enabled or 'false' disabled)
-        transfer_success: false, // Notify on successful transfer ('true' enabled or 'false' disabled)
+        transfer_success: true, // Notify on successful transfer ('true' enabled or 'false' disabled)
         transfer_cancel: true, // Notify on declined transfer ('true' enabled or 'false' disabled) 
     };
 
